@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import { players } from '../models/player.model';
 import { generatePlayerId } from '../utils/idGenerator';
 import { Player } from '../types/player';
+import { Wallet } from '../types/wallet';
 
 export async function registerPlayer(
   name: string,
@@ -14,6 +15,13 @@ export async function registerPlayer(
   const hashedPassword = await bcrypt.hash(password, 10);
   const playerId = generatePlayerId();
 
+
+  const wallet: Wallet = {
+    balance: 0,
+    referralBonusFromRegistration: 0,
+    referralBonusFromDeposit: 0,
+  }
+
   const newPlayer: Player = {
     id: playerId,
     name,
@@ -22,12 +30,7 @@ export async function registerPlayer(
     ipAddress,
     originUrl,
     referredBy,
-    wallet: {
-     balance: 0,
-     referralBonusFromRegistration: 0,
-     referralBonusFromDeposit: 0,
-    },
-
+    wallet,
     referrals: [],
   };
 

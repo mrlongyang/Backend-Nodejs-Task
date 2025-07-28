@@ -1,5 +1,5 @@
 export interface Wallet {
-     banlance: number;
+     balance: number;
      referralBonusFromRegistration: number;
      referralBonusFromDeposit: number;
 }
