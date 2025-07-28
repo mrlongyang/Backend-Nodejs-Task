@@ -1,3 +1,5 @@
+import { Wallet } from './wallet';
+
 export interface Player {
      id: string;
      name: string;
@@ -6,10 +8,6 @@ export interface Player {
      ipAddress: string;
      originUrl: string;
      referredBy?: string;
-     wallet: {
-          balance: number; // ✅ correct spelling
-          referralBonusFromRegistration: number;
-          referralBonusFromDeposit: number;
-          }
+     wallet: Wallet;
      referrals: string[]; // array of player IDs referred
 }
